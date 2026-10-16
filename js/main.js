@@ -66,16 +66,89 @@
     photoBox.appendChild(el("span", { class: "initials", text: initials }));
   }
 
+  // ---------- project details window ----------
+  var modal = document.getElementById("projectModal");
+  var modalBody = document.getElementById("modalBody");
+
+  // Turns a YouTube link or a local .mp4/.webm path into a player. Anything else is ignored.
+  function buildVideo(src, poster, title) {
+    if (!src) return null;
+    var yt = src.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/))([\w-]{11})/);
+    if (yt) {
+      return el("div", { class: "video-wrap" }, [
+        el("iframe", {
+          src: "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0",
+          title: "Video: " + title, loading: "lazy", allowfullscreen: "",
+          allow: "accelerometer; encrypted-media; picture-in-picture; fullscreen"
+        })
+      ]);
+    }
+    if (/\.(mp4|webm)(\?.*)?$/i.test(src)) {
+      var v = el("video", { src: src, controls: "", playsinline: "", preload: "metadata" });
+      if (poster) v.setAttribute("poster", poster);
+      return el("div", { class: "video-wrap" }, [v]);
+    }
+    return null;
+  }
+
+  // track = "data" or "front"; the same window serves both sections
+  function openDetails(p, track) {
+    var isFront = track === "front";
+    modal.setAttribute("data-track", track);
+    modalBody.textContent = "";
+    var player = buildVideo(p.video, p.image, p.title);
+    var media = player || el("img", { class: "modal-img", src: p.image, alt: (isFront ? "Screenshot: " : "Dashboard: ") + p.title });
+    var title = el("h3", { id: "modalTitle", text: p.title });
+    var links = el("div", { class: "actions" }, [
+      linkBtn(isFront ? "Live demo" : "View project", p.liveUrl, isFront ? "btn-front" : "btn-data"),
+      linkBtn(isFront ? "Source code" : "GitHub / files", p.githubUrl, "btn-ghost")
+    ]);
+    var about = p.overview || p.description;
+    var toolList = p.tools || p.tech;
+    modalBody.appendChild(media);
+    modalBody.appendChild(el("div", { class: "modal-text" }, [
+      title,
+      about ? block(p.overview ? "Overview" : "About", el("p", { text: about })) : null,
+      (toolList && toolList.length) ? block(isFront ? "Built with" : "Tools", chips(toolList)) : null,
+      (p.steps && p.steps.length) ? block("Analysis steps", (function () {
+        var ol = el("ol", { class: "steps" });
+        p.steps.forEach(function (s) { ol.appendChild(el("li", { text: s })); });
+        return ol;
+      })()) : null,
+      (p.findings && p.findings.length) ? block("Key findings", bullets(p.findings)) : null,
+      (p.features && p.features.length) ? block("Features", bullets(p.features)) : null,
+      links.children.length ? links : null
+    ]));
+    if (typeof modal.showModal === "function") modal.showModal(); else modal.setAttribute("open", "");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeDetails() {
+    if (modal.open) modal.close();
+  }
+  modal.addEventListener("close", function () {
+    modalBody.textContent = "";            // also stops any playing video
+    document.body.classList.remove("no-scroll");
+  });
+  document.getElementById("modalClose").addEventListener("click", closeDetails);
+  modal.addEventListener("click", function (e) { if (e.target === modal) closeDetails(); });   // click on the dark backdrop
+
   // ---------- data projects ----------
   var dataRoot = document.getElementById("dataProjects");
   DATA.forEach(function (p) {
-    var media = el("div", { class: "case-media" }, [
+    var media = el("button", { class: "case-media", type: "button", "aria-label": "Open details of " + p.title }, [
       el("img", { src: p.image, alt: "Screenshot of " + p.title, loading: "lazy", width: "800", height: "450" }),
-      badge(p)
+      badge(p),
+      el("span", { class: "media-hint", text: p.video ? "▶ Watch & details" : "View details" })
     ]);
+    media.addEventListener("click", function () { openDetails(p, "data"); });
+
+    var detailsBtn = el("button", { class: "btn btn-sm btn-data", type: "button", text: p.video ? "Watch video & details" : "Details" });
+    detailsBtn.addEventListener("click", function () { openDetails(p, "data"); });
 
     var links = el("div", { class: "actions" }, [
-      linkBtn("View project", p.liveUrl, "btn-data"),
+      detailsBtn,
+      linkBtn("View project", p.liveUrl, "btn-ghost"),
       linkBtn("GitHub / files", p.githubUrl, "btn-ghost")
     ]);
 
@@ -102,14 +175,24 @@
   // ---------- front-end projects ----------
   var frontRoot = document.getElementById("frontProjects");
   FRONT.forEach(function (p) {
+    var shotBtn = el("button", { class: "shot-btn", type: "button", "aria-label": "Open details of " + p.title }, [
+      el("img", { src: p.image, alt: "Interface of " + p.title, loading: "lazy", width: "800", height: "500" }),
+      el("span", { class: "media-hint", text: p.video ? "▶ Watch & details" : "View details" })
+    ]);
+    shotBtn.addEventListener("click", function () { openDetails(p, "front"); });
+
     var shot = el("div", { class: "shot" }, [
       el("div", { class: "shot-bar", "aria-hidden": "true" }, [el("i"), el("i"), el("i")]),
-      el("img", { src: p.image, alt: "Interface of " + p.title, loading: "lazy", width: "800", height: "500" }),
+      shotBtn,
       badge(p)
     ]);
 
+    var detailsBtn = el("button", { class: "btn btn-sm btn-front", type: "button", text: p.video ? "Watch video & details" : "Details" });
+    detailsBtn.addEventListener("click", function () { openDetails(p, "front"); });
+
     var links = el("div", { class: "actions" }, [
-      linkBtn("Live demo", p.liveUrl, "btn-front"),
+      detailsBtn,
+      linkBtn("Live demo", p.liveUrl, "btn-ghost"),
       linkBtn("Source code", p.githubUrl, "btn-ghost")
     ]);
 
@@ -188,15 +271,12 @@
           _replyto: email, _template: "table", _captcha: "false"
         })
       }).then(function (r) { return r.json(); }).then(function (res) {
-        console.log("FormSubmit response:", res);
         if (res && (res.success === true || res.success === "true")) {
-          
           form.reset();
           statusEl.textContent = "Thank you! Your message was sent. I'll reply to you by email soon.";
           statusEl.classList.add("ok");
         } else { throw new Error("failed"); }
-      }).catch(function (err) {
-        console.error("form error :",err)
+      }).catch(function () {
         var href = "mailto:" + C.email + "?subject=" + encodeURIComponent("Project inquiry from " + name) +
                    "&body=" + encodeURIComponent(message + "\n\n" + name + " (" + email + ")");
         statusEl.innerHTML = "";
