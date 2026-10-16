@@ -41,8 +41,16 @@ Copy one `{ ... }` block, paste it after the last one (add a comma between block
 }
 ```
 
+**Details window + video:** clicking a dashboard image (or the "Details" button) opens a window with the big image, overview, steps and findings. To add a video, put a link in the `video` field:
+```js
+video: "https://youtu.be/XXXXXXXXXXX",     // YouTube (upload as "Unlisted"), recommended for big videos
+// or
+video: "assets/video/my-dashboard.mp4",    // a small compressed file inside the site (under ~20 MB)
+```
+Leave `video` out and the window shows the image only.
+
 ### 3. Add a Front-End project → `data/frontend-projects.js`
-Same idea:
+Same idea, and the same details window and `video` field work here too (clicking a project image opens it):
 
 ```js
 {
@@ -51,6 +59,7 @@ Same idea:
   description: "What it is and what it does.",
   tech: ["HTML", "CSS", "JavaScript"],
   features: ["Responsive layout", "Search by city"],
+  video: "https://youtu.be/XXXXXXXXXXX",   // optional, YouTube link or assets/video/file.mp4
   liveUrl: "https://...",
   githubUrl: "https://github.com/..."
 }
@@ -67,7 +76,7 @@ Your 3 front-end projects are in too. Add `tech` (e.g. `["HTML","CSS","JavaScrip
 
 ### Colors
 Open `css/style.css`. The first ~50 lines hold all colors:
-`--data` is the teal accent (Data Analysis), `--front` is the terracotta accent (Front-End).
+`--data` is the cobalt-blue accent (Data Analysis), `--front` is ink black (Front-End). To change the whole feel, change just those two lines (and the dark-mode ones below).
 The dark theme colors are in the `[data-theme="dark"]` block.
 
 ## Preview on your computer
