@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mohamed Yasser | Data Analyst & Front-End Developer</title>
   <meta name="description" content="Portfolio of Mohamed Yasser: data analysis projects (Excel, Power BI, SQL) and front-end development projects (HTML, CSS, JavaScript, React).">
-  <meta name="theme-color" content="#2f7f79">
+  <meta name="theme-color" content="#1d4ed8">
 
   <!-- Open Graph (link previews). Replace the URL after you publish. -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Mohamed Yasser | Data Analyst & Front-End Developer">
   <meta property="og:description" content="Data analysis and front-end development projects in one portfolio.">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232f7f79'/%3E%3Ctext x='50' y='68' font-size='54' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23121212'/%3E%3Ctext x='50' y='68' font-size='54' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3EM%3C/text%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Apply saved theme before paint to avoid a flash -->
@@ -175,6 +175,16 @@
       <a href="#home">Back to top ↑</a>
     </div>
   </footer>
+
+  <!-- Project details window (filled by js/main.js) -->
+  <dialog id="projectModal" class="modal" aria-labelledby="modalTitle">
+    <div class="modal-inner">
+      <button id="modalClose" class="modal-close" type="button" aria-label="Close details">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div id="modalBody"></div>
+    </div>
+  </dialog>
 
   <noscript><p class="noscript">Please enable JavaScript to see the portfolio content.</p></noscript>
 
