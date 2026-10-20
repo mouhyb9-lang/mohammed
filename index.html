@@ -1,316 +1,196 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ashraf | Portfolio</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mohamed Yasser | Data Analyst & Front-End Developer</title>
+  <meta name="description" content="Portfolio of Mohamed Yasser: data analysis projects (Excel, Power BI, SQL) and front-end development projects (HTML, CSS, JavaScript, React).">
+  <meta name="theme-color" content="#1d4ed8">
+
+  <!-- Open Graph (link previews). Replace the URL after you publish. -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mohamed Yasser | Data Analyst & Front-End Developer">
+  <meta property="og:description" content="Data analysis and front-end development projects in one portfolio.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23121212'/%3E%3Ctext x='50' y='68' font-size='54' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Apply saved theme before paint to avoid a flash -->
+  <script>
+    try {
+      var t = localStorage.getItem("theme");
+      if (t) document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  </script>
 </head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
 
-<body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#home">
-            <span class="text-info">Ashraf</span> Portfolio
-        </a>
-        <button class="navbar-toggler" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navMenu">
-            <span class="navbar-toggler-icon"></span>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Home"><span class="brand-mark">M</span><span class="brand-name" data-profile="name">Mohamed Yasser</span></a>
+
+      <nav id="nav" class="nav" aria-label="Main">
+        <a href="#home">Home</a>
+        <a href="#data">Data Analysis</a>
+        <a href="#frontend">Front-End</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark mode">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
-        <div class="collapse navbar-collapse" id="navMenu">
-            <div class="navbar-nav ms-auto">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-        </div>
+        <button id="menuToggle" class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
     </div>
-</nav>
-<section id="home" class="bg-dark text-white py-5">
-    <div class="container py-5">
-        <div class="row align-items-center">
-            <div class="col-md-7 text-center text-md-start">
-                <span class="badge bg-info text-dark mb-3 p-2">
-                    Welcome To My Portfolio
-                </span>
-                <h1 class="display-4 fw-bold">
-                    Hi, I'm <span class="text-info">Ashraf</span>
-                </h1>
-                <h2 class="h3 text-info mb-3">
-                    Web Developer
-                </h2>
-                <p class="lead text-white-50">
-                    I build modern, responsive and user-friendly websites
-                    using HTML, CSS, Bootstrap and JavaScript.
-                </p>
-                <a href="#projects" class="btn btn-info btn-lg me-2 mb-2">
-                    <i class="bi bi-briefcase me-1"></i>
-                    My Projects
-                </a>
-                <a href="#contact" class="btn btn-outline-light btn-lg mb-2">
-                    Contact Me
-                </a>
-            </div>
-            <div class="col-md-5 text-center mt-4 mt-md-0">
-                <img src="assets/img/person.jpg"
-                     alt="Ashraf Profile"
-                     width="230"
-                     height="230"
-                     class="rounded-circle border border-4 border-info shadow">
-                <div class="mt-3">
-                    <span class="badge bg-secondary p-2">
-                        <i class="bi bi-code-slash me-1"></i>
-                        Creative Developer
-                    </span>
-                </div>
-            </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Portfolio</p>
+          <h1><span data-profile="name">Mohamed Yasser</span></h1>
+          <p class="hero-title" data-profile="title">Data Analyst &amp; Front-End Developer</p>
+          <p class="hero-bio" data-profile="bio"></p>
+          <div class="hero-cta">
+            <a class="btn btn-data" href="#data">View Data Projects</a>
+            <a class="btn btn-front" href="#frontend">View Front-End Projects</a>
+            <a class="btn btn-ghost" href="#contact">Contact me</a>
+          </div>
         </div>
+        <div class="hero-photo" id="heroPhoto" aria-label="Profile photo"></div>
+      </div>
+
+      <div class="container track-cards">
+        <a class="track-card track-data" href="#data">
+          <span class="track-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+          </span>
+          <h2>Data Analysis</h2>
+          <p>Dashboards, queries and insights that answer real questions.</p>
+          <span class="track-link">See projects →</span>
+        </a>
+        <a class="track-card track-front" href="#frontend">
+          <span class="track-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
+          </span>
+          <h2>Front-End Development</h2>
+          <p>Responsive, clean interfaces built with modern web tools.</p>
+          <span class="track-link">See projects →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- DATA ANALYSIS -->
+    <section id="data" class="section section-data" aria-labelledby="data-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">01 · Data Analysis</p>
+          <h2 id="data-title">Data Analysis Projects</h2>
+          <p class="section-sub">Each project starts with a question, then shows the tools, the steps and what the data revealed.</p>
+        </header>
+        <div id="dataProjects" class="data-list"></div>
+      </div>
+    </section>
+
+    <!-- FRONT-END -->
+    <section id="frontend" class="section section-front" aria-labelledby="front-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">02 · Front-End Development</p>
+          <h2 id="front-title">Front-End Projects</h2>
+          <p class="section-sub">Interfaces built to look good and work well on every screen size.</p>
+        </header>
+        <div id="frontProjects" class="front-grid"></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">03 · Skills</p>
+          <h2 id="skills-title">Skills</h2>
+        </header>
+        <div class="skills-grid">
+          <div class="skills-box skills-data">
+            <h3>Data Analysis</h3>
+            <ul id="skillsData" class="chips"></ul>
+          </div>
+          <div class="skills-box skills-front">
+            <h3>Front-End Development</h3>
+            <ul id="skillsFront" class="chips"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-contact" aria-labelledby="contact-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">04 · Contact</p>
+          <h2 id="contact-title">Let's work together</h2>
+          <p class="section-sub">Have a project or an opportunity in mind? Reach out through any of these.</p>
+        </header>
+        <div class="contact-grid">
+          <div>
+            <ul id="contactList" class="contact-list"></ul>
+            <p id="contactEmpty" class="muted" hidden>Contact links will appear here once added in <code>data/profile.js</code>.</p>
+          </div>
+
+          <form id="contactForm" class="contact-form" novalidate>
+            <h3>Send me your project details</h3>
+            <p class="muted">Your message goes straight to my email, and I'll reply as soon as I can.</p>
+
+            <label for="cfName">Your name</label>
+            <input id="cfName" name="name" type="text" autocomplete="name" required maxlength="80">
+
+            <label for="cfEmail">Your email</label>
+            <input id="cfEmail" name="email" type="email" autocomplete="email" required maxlength="120">
+
+            <label for="cfMessage">Project details</label>
+            <textarea id="cfMessage" name="message" rows="6" required maxlength="3000" placeholder="What do you need? Type of project, goal, deadline..."></textarea>
+
+            <!-- honeypot: real visitors never see or fill this -->
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+
+            <button id="cfSubmit" class="btn btn-data" type="submit">Send message</button>
+            <p id="cfStatus" class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> <span data-profile="name">Mohamed Yasser</span></p>
+      <a href="#home">Back to top ↑</a>
     </div>
-</section>
-<section id="about" class="py-5">
-    <div class="container py-3">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold text-dark">
-                About <span class="text-primary">Me</span>
-            </h2>
-            <p class="text-secondary">
-                Get to know me better
-            </p>
-        </div>
-        <div class="row g-4 align-items-stretch">
-            <div class="col-md-6">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body p-4">
-                        <div class="text-primary display-6 mb-3">
-                            <i class="bi bi-person-workspace"></i>
-                        </div>
-                        <h4 class="fw-bold">Who Am I?</h4>
-                        <p class="text-secondary">
-                            I am a passionate web developer who enjoys
-                            learning new technologies and creating
-                            useful digital experiences.
-                        </p>
-                        <p class="text-secondary">
-                            My goal is to build clean, responsive
-                            and easy-to-use websites.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-header bg-primary text-white p-3">
-                        <h5 class="mb-0">
-                            <i class="bi bi-person-lines-fill me-2"></i>
-                            Personal Information
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <p>
-                            <i class="bi bi-person-fill text-primary me-2"></i>
-                            <strong>Name:</strong> Ashraf
-                        </p>
-                        <p>
-                            <i class="bi bi-envelope-fill text-primary me-2"></i>
-                            <strong>Email:</strong> ashraf@gmail.com
-                        </p>
-                        <p>
-                            <i class="bi bi-geo-alt-fill text-primary me-2"></i>
-                            <strong>Location:</strong> Egypt
-                        </p>
-                        <p class="mb-0">
-                            <i class="bi bi-code-slash text-primary me-2"></i>
-                            <strong>Role:</strong> Web Developer
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  </footer>
+
+  <!-- Project details window (filled by js/main.js) -->
+  <dialog id="projectModal" class="modal" aria-labelledby="modalTitle">
+    <div class="modal-inner">
+      <button id="modalClose" class="modal-close" type="button" aria-label="Close details">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div id="modalBody"></div>
     </div>
-</section>
+  </dialog>
 
-<section id="skills" class="bg-white py-5">
-    <div class="container py-3">
-        <div class="text-center mb-5">
-        <h2 class="fw-bold">
-                My <span class="text-primary">Skills</span>
-            </h2>
-            <p class="text-secondary">
-                Technologies I use to build websites
-            </p>
-        </div>
-        <div class="row g-4 text-center">
-            <div class="col-6 col-md-3">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body p-4">
-                        <i class="bi bi-filetype-html display-4 text-danger"></i>
-                        <h5 class="fw-bold mt-3">HTML</h5>
-                        <span class="badge bg-danger">Structure</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body p-4">
-                        <i class="bi bi-filetype-css display-4 text-primary"></i>
-                        <h5 class="fw-bold mt-3">CSS</h5>
-                        <span class="badge bg-primary">Styling</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body p-4">
-                    <i class="bi bi-bootstrap-fill display-4 text-info"></i>
-                        <h5 class="fw-bold mt-3">Bootstrap</h5>
-                        <span class="badge bg-info text-dark">Responsive</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body p-4">
-                        <i class="bi bi-filetype-js display-4 text-warning"></i>
-                        <h5 class="fw-bold mt-3">JavaScript</h5>
-                        <span class="badge bg-warning text-dark">Interactive</span>
-                    </div>
-                </div>
-            </div>
-       </div>
-    </div>
-</section>
+  <noscript><p class="noscript">Please enable JavaScript to see the portfolio content.</p></noscript>
 
-<section id="projects" class="py-5">
-    <div class="container py-3">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">
-                My <span class="text-primary">Projects</span>
-            </h2>
-            <p class="text-secondary">
-                Some projects I have worked on
-            </p>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <img src="https://placehold.co/600x400/0d6efd/ffffff?text=Student+System"
-                         class="card-img-top"
-                         alt="Student Management System">
-                    <div class="card-body p-4">
-                        <span class="badge bg-primary mb-2">Management</span>
-                        <h5 class="fw-bold">Student System</h5>
-                        <p class="text-secondary">
-                            A simple system for managing student records.
-                        </p>
-                        <a href="#" class="btn btn-outline-primary">
-                            View Project
-                            <i class="bi bi-arrow-right ms-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <img src="https://placehold.co/600x400/212529/ffffff?text=My+Website"
-                         class="card-img-top"
-                         alt="Personal Website">
-                    <div class="card-body p-4">
-                        <span class="badge bg-dark mb-2">Portfolio</span>
-                        <h5 class="fw-bold">Personal Website</h5>
-                        <p class="text-secondary">
-                            A personal website to introduce skills and work.
-                        </p>
-                        <a href="#" class="btn btn-outline-primary">
-                            View Project
-                      <i class="bi bi-arrow-right ms-1"></i>
-                    </a>
-                 </div>
-             </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <img src="https://placehold.co/600x400/198754/ffffff?text=Online+Store"
-                         class="card-img-top"
-                         alt="Online Store">
-                    <div class="card-body p-4">
-                        <span class="badge bg-success mb-2">E-Commerce</span>
-                        <h5 class="fw-bold">Online Store</h5>
-                        <p class="text-secondary">
-                            A simple online store with product cards.
-                        </p>
-                        <a href="#" class="btn btn-outline-primary">
-                            View Project
-                            <i class="bi bi-arrow-right ms-1"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-   </div>
-</section>
-
-<section id="contact" class="bg-dark text-white py-5">
-    <div class="container py-3">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">
-                Contact <span class="text-info">Me</span>
-            </h2>
-            <p class="text-white-50">
-                Have a project in mind? Let's talk.
-            </p>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-7 col-lg-6">
-                <div class="card border-0 shadow">
-                    <div class="card-body p-4">
-
-                        <form>
-                            <label class="form-label text-dark">
-                                Your Name
-                            </label>
-                            <input type="text"
-                                   class="form-control mb-3"
-                                   placeholder="Enter your name">
-                           <label class="form-label text-dark">
-                                Your Email
-                            </label>
-                          <input type="email"
-                                   class="form-control mb-3"
-                                   placeholder="name@example.com">
-                            <label class="form-label text-dark">
-                                Your Message
-                            </label>
-                            <textarea class="form-control mb-3"
-                                      rows="4"
-                                      placeholder="Write your message"></textarea>
-                            <button type="button" class="btn btn-primary w-100">
-                                <i class="bi bi-send me-2"></i>
-                                Send Message
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<footer class="bg-black text-white text-center py-4">
-    <div class="container">
-        <h5 class="fw-bold">
-            Ashraf Portfolio
-        </h5>
-        <p class="text-white-50 mb-2">
-            Building ideas into websites.
-        </p>
-        <p class="mb-0">
-            &copy; 2026 Ashraf. All Rights Reserved.
-        </p>
-    </div>
-</footer>
-<script src="js/bootstrap.js"></script>
+  <script src="data/profile.js"></script>
+  <script src="data/data-projects.js"></script>
+  <script src="data/frontend-projects.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
